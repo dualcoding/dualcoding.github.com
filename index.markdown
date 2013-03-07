@@ -1,1 +1,4 @@
-dualcoding.info git
+---
+layout: default
+---
+dualcoding.info
