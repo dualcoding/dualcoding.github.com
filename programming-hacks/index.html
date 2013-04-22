@@ -10,5 +10,38 @@
 <title>dualcoding.info - Programming Hacks</title>
 </head>
 <body>
+
+<h1>Programming Hacks</h1>
+
+<h3>Multimethods in Javascript</h3>
+<pre><code language="javascript">
+function dispatchError(name, key) {
+	throw "no matching method " + name + "[" + key + "]";
+}
+
+
+function byNumberOfArguments() {
+	var target = byNumberOfArguments[arguments.length]
+	          || dispatchError("byNumberOfArguments", arguments.length);
+
+	return target.apply(this, arguments);
+}
+
+byNumberOfArguments[0] = function()  { console.log("Called with zero arguments."     ); };
+byNumberOfArguments[1] = function(x) { console.log("Called with argument: " + x + "."); };
+
+
+function byFirstParameterAsString() {
+	var target = byFirstParameterAsString[arguments[0] && arguments[0].toString()]
+	          || dispatchError("byFirstParameterAsString")
+
+	return target.apply(this, arguments);
+}
+
+byFirstParameterAsString["add"] = function (op, x, y) { return x + y; };
+byFirstParameterAsString["sub"] = function (op, x, y) { return x - y; };
+</code></pre>
+
+
 </body>
 </html>
