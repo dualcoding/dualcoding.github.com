@@ -42,6 +42,29 @@ byFirstParameterAsString["add"] = function (op, x, y) { return x + y; };
 byFirstParameterAsString["sub"] = function (op, x, y) { return x - y; };
 </code></pre>
 
+<h2>C Hacks</h2>
+
+<ul>
+<li>Named parameters</li>
+http://ideone.com/oiiqxM
+
+<li>'or' for error handling</li>
+#define or(statement) ?:({ statement; NULL; })
+
+<li>Newtypes</li>
+#define newtype(oldtype) typedef union { oldtype value; }
+#define from(x) x.value
+
+newtype(int) cm;
+void set_size(cm height, cm length);
+
+set_size((cm){5}, (cm){7});
+or with GCC set_size((cm) 5...);
+
+<li>Datatypes</li>
+
+</ul>
+
 
 </body>
 </html>
