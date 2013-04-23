@@ -44,22 +44,32 @@ byFirstParameterAsString["sub"] = function (op, x, y) { return x - y; };
 
 <h2>C Hacks</h2>
 
+<h3>Newtypes</h3>
+<pre><code language="C">
+#define newtype(oldtype) typedef union { oldtype value; }
+
+/* Define and use a newtype */
+newtype(int) cm;
+
+cm add_cm(cm a, cm b)
+{
+	/* In GCC/Clang */
+	cm ret = (cm) a.value + b.value;
+
+	/* C99 */
+	cm ret = (cm){ a.value + b.value };
+
+	return ret;
+}
+</code></pre>
+
+
 <ul>
 <li>Named parameters</li>
 http://ideone.com/oiiqxM
 
 <li>'or' for error handling</li>
 #define or(statement) ?:({ statement; NULL; })
-
-<li>Newtypes</li>
-#define newtype(oldtype) typedef union { oldtype value; }
-#define from(x) x.value
-
-newtype(int) cm;
-void set_size(cm height, cm length);
-
-set_size((cm){5}, (cm){7});
-or with GCC set_size((cm) 5...);
 
 <li>Datatypes</li>
 
