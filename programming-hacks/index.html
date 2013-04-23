@@ -63,13 +63,17 @@ cm add_cm(cm a, cm b)
 }
 </code></pre>
 
+<h3>Prettier error handling with 'or'</h3>
+<pre><code language="C">
+#define or(statement) ?:({ statement; NULL; })
+
+/* Usage */
+resource *res = allocate_resource() or (goto error);
+</code></pre>
 
 <ul>
 <li>Named parameters</li>
 http://ideone.com/oiiqxM
-
-<li>'or' for error handling</li>
-#define or(statement) ?:({ statement; NULL; })
 
 <li>Datatypes</li>
 
