@@ -14,7 +14,7 @@
 <h1>Programming Hacks</h1>
 
 <h3>Multimethods in Javascript</h3>
-<pre><code language="javascript">
+<pre><code class="language-javascript">
 function dispatchError(name, key) {
 	throw "no matching method " + name + "[" + key + "]";
 }
@@ -45,7 +45,7 @@ byFirstParameterAsString["sub"] = function (op, x, y) { return x - y; };
 <h2>C Hacks</h2>
 
 <h3>Newtypes</h3>
-<pre><code language="C">
+<pre><code class="language-c">
 #define newtype(oldtype) typedef union { oldtype value; }
 
 /* Define and use a newtype */
@@ -64,7 +64,7 @@ cm add_cm(cm a, cm b)
 </code></pre>
 
 <h3>Prettier error handling with 'or'</h3>
-<pre><code language="C">
+<pre><code class="language-c">
 #define or(statement) ?:({ statement; NULL; })
 
 /* Usage */
